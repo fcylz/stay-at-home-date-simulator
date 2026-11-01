@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🏠お家デートシミュレーター</title>
+    <title>🏠居家约会模拟器</title>
     <style>
         :root { --panel-width: 300px; }
-        body { margin: 0; font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; background: #ffffff; overflow: hidden; position: fixed; width: 100%; height: 100%; }
+        body { margin: 0; font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; background: #ffffff; overflow: hidden; position: fixed; width: 100%; height: 100%; }
         
         #ui-panel {
             position: absolute; 
@@ -206,86 +206,86 @@
 
 <div id="orientation-overlay">
     <div class="icon">📱</div>
-    <p>スマホを横に持ってください</p>
+    <p>请横着拿手机</p>
 </div>
 
 <div id="ui-panel">
     <div class="panel-header" onclick="togglePanel()">
-        <h1 class="app-title">🏠お家デートシミュレーター</h1>
-        <span id="toggle-text">閉じる</span>
+        <h1 class="app-title">🏠居家约会模拟器</h1>
+        <span id="toggle-text">收起</span>
     </div>
 
     <div id="ui-content">
-        <p class="app-description">お家デートでテレビを観てるときの体格差をシミュレートします。</p>
+        <p class="app-description">模拟在家约会看电视时的体型差。</p>
 
         <div class="input-group group-a">
             <div class="section-header"><strong>A</strong></div>
             <div class="input-row">
-                <div class="input-item"><span class="hint">名前</span><input type="text" id="nameA" placeholder="名前A" oninput="updateScene()"></div>
-                <div class="input-item" style="flex: 0.6;"><span class="hint">性別</span><select id="genderA" onchange="updateScene()"><option value="male">男</option><option value="female" selected>女</option></select></div>
+                <div class="input-item"><span class="hint">名字</span><input type="text" id="nameA" placeholder="名字A" oninput="updateScene()"></div>
+                <div class="input-item" style="flex: 0.6;"><span class="hint">性别</span><select id="genderA" onchange="updateScene()"><option value="male">男</option><option value="female" selected>女</option></select></div>
             </div>
             <div class="input-row">
-                <div class="input-item"><span class="hint">身長 (cm)</span><input type="number" id="heightA" value="158.0" step="0.1" oninput="updateScene()"></div>
-                <div class="input-item" style="flex: 0.35;"><span class="hint">色</span><input type="color" id="colorA" class="color-picker" value="#ffcc99" oninput="updateScene()"></div>
+                <div class="input-item"><span class="hint">身高 (cm)</span><input type="number" id="heightA" value="158.0" step="0.1" oninput="updateScene()"></div>
+                <div class="input-item" style="flex: 0.35;"><span class="hint">颜色</span><input type="color" id="colorA" class="color-picker" value="#ffcc99" oninput="updateScene()"></div>
             </div>
         </div>
 
         <div class="input-group group-b" id="panel-group-b">
             <div class="section-header"><strong>B</strong></div>
             <div class="input-row">
-                <div class="input-item"><span class="hint">名前</span><input type="text" id="nameB" placeholder="名前B" oninput="updateScene()"></div>
-                <div class="input-item" style="flex: 0.6;"><span class="hint">性別</span><select id="genderB" onchange="updateScene()"><option value="male" selected>男</option><option value="female">女</option></select></div>
+                <div class="input-item"><span class="hint">名字</span><input type="text" id="nameB" placeholder="名字B" oninput="updateScene()"></div>
+                <div class="input-item" style="flex: 0.6;"><span class="hint">性别</span><select id="genderB" onchange="updateScene()"><option value="male" selected>男</option><option value="female">女</option></select></div>
             </div>
             <div class="input-row">
-                <div class="input-item"><span class="hint">身長 (cm)</span><input type="number" id="heightB" value="171.5" step="0.1" oninput="updateScene()"></div>
-                <div class="input-item" style="flex: 0.35;"><span class="hint">色</span><input type="color" id="colorB" class="color-picker" value="#ffad60" oninput="updateScene()"></div>
+                <div class="input-item"><span class="hint">身高 (cm)</span><input type="number" id="heightB" value="171.5" step="0.1" oninput="updateScene()"></div>
+                <div class="input-item" style="flex: 0.35;"><span class="hint">颜色</span><input type="color" id="colorB" class="color-picker" value="#ffad60" oninput="updateScene()"></div>
             </div>
         </div>
 
         <div class="input-group group-layout">
-            <div class="section-header"><strong>配置設定</strong></div>
+            <div class="section-header"><strong>布局设置</strong></div>
             <input type="hidden" id="sittingMode" value="bench">
 
             <div id="distance-container" class="input-item">
-                <span class="hint">二人の距離 (間隔)<span id="distance-val"></span></span>
+                <span class="hint">两人距离（间隔）<span id="distance-val"></span></span>
                 <input type="range" id="sittingDistance" min="0.3" max="1.5" step="0.01" value="0.75" oninput="updateScene()">
             </div>
             <div class="input-item" style="margin-top: 5px;">
-                <span class="hint">部屋の明るさ (照明)</span>
+                <span class="hint">房间亮度（照明）</span>
                 <input type="range" id="ambientLight" min="0.0" max="2.5" step="0.05" value="2.5" oninput="updateScene()">
             </div>
             <div class="input-item" style="margin-top: 5px;">
-                <span class="hint">テレビのYouTube URL</span>
+                <span class="hint">电视的 YouTube 链接</span>
                 <div class="input-row" style="gap: 6px; align-items: center;">
                     <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." oninput="handleYoutubeUrlInput()">
-                    <button class="yt-play-btn" onclick="handleYoutubeUrlInput()">再生</button>
+                    <button class="yt-play-btn" onclick="handleYoutubeUrlInput()">播放</button>
                 </div>
             </div>
         </div>
 
         <div style="padding: 0 5px;">
-            <button class="switch-btn swap-btn" id="btn-swap" onclick="swapAB()">⇄ AとBを入れ替える</button>
-            <button class="switch-btn" onclick="switchView()">🔄 視点を切り替える</button>
+            <button class="switch-btn swap-btn" id="btn-swap" onclick="swapAB()">⇄ 交换 A 与 B</button>
+            <button class="switch-btn" onclick="switchView()">🔄 切换视角</button>
         </div>
         
         <div id="info-container">
             <div class="info-box" id="info"></div>
             <button class="share-btn" onclick="shareToX()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>で結果をシェアする
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg> 分享结果
             </button>
             <div class="other-tools-link">
-                <p style="font-size: 10px; color: #888; margin-bottom: 8px;">こちらもチェック❣🤩</p>
-                <a href="https://qwertyaz111.github.io/my-site-hub/">ツール・シミュレーター一覧</a>
+                <p style="font-size: 10px; color: #888; margin-bottom: 8px;">顺便也看看这些❣🤩</p>
+                <a href="https://qwertyaz111.github.io/my-site-hub/">工具・模拟器合集</a>
             </div>
             <div class="usage-notes">
-                スクショ投稿や加工、トレース等はご自由にお楽しみください。<br>
-                ※営利目的や商用利用はご遠慮ください。
+                截图分享、二次加工、临摹描图等都可以随意使用。<br>
+                ※请勿用于营利、商业用途。
             </div>
         </div>
     </div>
 </div>
 
-<div id="view-label">三人称視点</div>
+<div id="view-label">第三人称视角</div>
 <div class="crosshair" id="crosshair" style="display:none;"></div>
 <div id="canvas-container"></div>
 
@@ -390,7 +390,7 @@
             const panel = document.getElementById('ui-panel');
             const text = document.getElementById('toggle-text');
             panel.classList.toggle('collapsed');
-            text.innerText = panel.classList.contains('collapsed') ? '開く' : '閉じる';
+            text.innerText = panel.classList.contains('collapsed') ? '展开' : '收起';
             checkOrientationOverlay();
         };
 
@@ -462,7 +462,7 @@
         wrapper.style.pointerEvents = 'auto';
 
         const iframe = document.createElement('iframe');
-        // 自動再生ポリシーに適合させるため mute=1 に設定
+        // 为符合自动播放策略，设置为 mute=1
         iframe.src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&mute=1&loop=1&playlist=${currentVideoId}&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
         iframe.style.width = '100%';
         iframe.style.height = '100%';
@@ -723,15 +723,15 @@
 
         const nA = document.getElementById('nameA').value||'A', nB = document.getElementById('nameB').value||'B';
         if (currentView === '3rd') {
-            document.getElementById('view-label').innerText = '三人称視点';
+            document.getElementById('view-label').innerText = '第三人称视角';
         } else {
             const myName = (currentView === 'A') ? nA : nB;
-            document.getElementById('view-label').innerText = `${myName} の視点`;
+            document.getElementById('view-label').innerText = `${myName} 的视角`;
         }
         
         document.getElementById('info').innerHTML = `
-            <div class="info-row"><span class="info-label">📏 全長身長差</span><span class="info-value">${Math.abs(hA-hB).toFixed(1)}<span class="unit">cm</span></span></div>
-            <div class="info-row"><span class="info-label">🪑 座高(目線)差</span><span class="info-value">${(Math.abs(hA - hB) * 0.55).toFixed(1)}<span class="unit">cm</span></span></div>
+            <div class="info-row"><span class="info-label">📏 全长身高差</span><span class="info-value">${Math.abs(hA-hB).toFixed(1)}<span class="unit">cm</span></span></div>
+            <div class="info-row"><span class="info-label">🪑 座高（视线）差</span><span class="info-value">${(Math.abs(hA - hB) * 0.55).toFixed(1)}<span class="unit">cm</span></span></div>
         `;
     }
 
@@ -873,10 +873,77 @@
     function shareToX() {
         const nA = document.getElementById('nameA').value || 'A', nB = document.getElementById('nameB').value || 'B';
         const hA = parseFloat(document.getElementById('heightA').value) || 158.0, hB = parseFloat(document.getElementById('heightB').value) || 171.5;
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${nA}(${hA.toFixed(1)}cm)と${nB}(${hB.toFixed(1)}cm)がお家デート！\n#お家デートシミュレーター`)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${nA}（${hA.toFixed(1)}cm）和 ${nB}（${hB.toFixed(1)}cm）来了一场居家约会！\n#居家约会模拟器`)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
     }
 
     init();
+</script>
+
+<script>
+/* 设置持久化：名字・身高・颜色等会记住，刷新后自动恢复 */
+(function () {
+  var KEY = 'simSettings:' + location.pathname;
+  var SKIP = { seek: 1, pVol: 1 };
+  function list() {
+    var els = document.querySelectorAll('input,select,textarea'), out = [], i, el;
+    for (i = 0; i < els.length; i++) {
+      el = els[i];
+      if (el.type === 'file' || el.type === 'button' || el.type === 'submit' || el.type === 'reset') continue;
+      if (el.id && SKIP[el.id]) continue;
+      out.push(el);
+    }
+    return out;
+  }
+  function keyOf(el) {
+    if (el.id) return 'id:' + el.id;
+    var cn = (el.className || '').split(/\s+/)[0];
+    if (!cn) return null;
+    var sibs = document.querySelectorAll(el.tagName.toLowerCase() + '[class~="' + cn + '"]'), i;
+    for (i = 0; i < sibs.length; i++) if (sibs[i] === el) return 'cls:' + cn + ':' + i;
+    return null;
+  }
+  function get(el) {
+    return (el.type === 'checkbox' || el.type === 'radio') ? el.checked : el.value;
+  }
+  function set(el, v) {
+    var i;
+    if (el.tagName === 'SELECT') {
+      var ok = false;
+      for (i = 0; i < el.options.length; i++) if (el.options[i].value === v) ok = true;
+      if (!ok) return;
+    }
+    if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!v;
+    else el.value = v;
+  }
+  function fire(el, type) {
+    try { el.dispatchEvent(new Event(type, { bubbles: true })); } catch (e) {}
+  }
+  function restore() {
+    var raw = null, data = null, els, k, i;
+    try { raw = localStorage.getItem(KEY); } catch (e) { return; }
+    if (!raw) return;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+    els = list();
+    for (i = 0; i < els.length; i++) { k = keyOf(els[i]); if (k && data[k] !== undefined) set(els[i], data[k]); }
+    for (i = 0; i < els.length; i++) { fire(els[i], 'input'); fire(els[i], 'change'); }
+    for (i = 0; i < els.length; i++) { k = keyOf(els[i]); if (k && data[k] !== undefined) set(els[i], data[k]); }
+  }
+  var timer = null;
+  function save() {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function () {
+      var els = list(), data = {}, k, i;
+      for (i = 0; i < els.length; i++) { k = keyOf(els[i]); if (k) data[k] = get(els[i]); }
+      try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {}
+    }, 200);
+  }
+  document.addEventListener('input', save, true);
+  document.addEventListener('change', save, true);
+  window.addEventListener('load', restore);
+  window.__simSettings = {
+    clear: function () { try { localStorage.removeItem(KEY); } catch (e) {} }
+  };
+})();
 </script>
 </body>
 </html>
